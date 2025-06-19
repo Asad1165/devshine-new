@@ -1,0 +1,304 @@
+.animated-button {
+  background-color: green;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+
+.animated-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background-color: darkblue;
+  transition: left 0.3s ease;
+  z-index: -1;
+}
+
+.animated-button:hover::before {
+  left: 0;
+}
+
+@keyframes btn_animate_circle_animation_frame {
+  0% {
+    width: 44px;
+  }
+  50% {
+    display: flex;
+    width: 100%;
+
+    justify-content: flex-end;
+    align-items: center;
+  }
+  100% {
+    display: flex;
+    width: 100%;
+
+    justify-content: flex-end;
+    align-items: center;
+  }
+}
+
+.btn_animate_style {
+  display: flex;
+  position: relative;
+  cursor: pointer;
+  // width: 159px;
+  height: 48px;
+  padding: 2px 2px 2px 2px;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 25px;
+  border-radius: 192px;
+  background-color: #01b969;
+  border: none;
+  transition:
+    background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,
+    box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,
+    border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  box-shadow:
+    0px 3px 5px -1px rgba(0, 0, 0, 0.2),
+    0px 6px 10px 0px rgba(0, 0, 0, 0.14),
+    0px 1px 18px 0px rgba(0, 0, 0, 0.12);
+  .btn_animate1_text {
+    position: absolute;
+    left: 21px;
+    color: #1e1e1e;
+    font-family: Inter;
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+  }
+}
+.btn_animate_circle_style {
+  display: flex;
+  position: relative;
+  width: 44px;
+  height: 44px;
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 0;
+  border-radius: 136px;
+  background: #1e1e1e;
+  svg {
+    position: absolute;
+    right: 11px;
+  }
+}
+
+.btn_animate_style:hover .btn_animate_circle_style {
+  animation: btn_animate_circle_animation_frame 0.5s linear forwards;
+}
+
+.btn_animate_style:hover .btn_animate1_text {
+  color: white;
+  z-index: 999;
+}
+
+/* Initial state of the button */
+.button_11 {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #1e1e1e;
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  transition:
+    background-color 600ms cubic-bezier(0.59, 0, 0, 1.01),
+    transform 600ms cubic-bezier(0.59, 0, 0, 1.01);
+}
+
+/* Hover state */
+.button_11:hover {
+  background-color: #1e1e1e;
+  transform: scale(1.05);
+  animation-timing-function: cubic-bezier(0, 0, 0.58, 1);
+  animation-duration: 300ms;
+}
+
+/* Active/click state */
+.button_11:active {
+  background-color: #1e1e1e;
+  transform: scale(0.95);
+  animation-timing-function: cubic-bezier(0.59, 0, 0, 1.01);
+  animation-duration: 600ms;
+}
+
+// **************************************************************** pop button
+
+.popButton {
+  cursor: pointer;
+  position: relative;
+  justify-content: start;
+  align-items: center;
+  gap: 20px;
+  width: 145px;
+  height: 49px;
+  color: #ffffff;
+  background: transparent;
+  display: inline-flex;
+  overflow: hidden;
+  border: none;
+  // &::before {
+  //   height: 10px;
+  //   width: 10px;
+  //   background-color: #01b969;
+  //   content: '';
+  //   display: flex;
+  // }
+  .popButton_circle {
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: transform 0.2s;
+    width: 30px;
+    height: 30px;
+    margin: 0 auto;
+    border-radius: 50%;
+    border: 1px solid red;
+    .popButton_zoom {
+      padding: 4px;
+      background-color: green;
+      transition: transform 0.2s;
+      width: 20px;
+      height: 20px;
+      margin: 0 auto;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      .popButton_arrow {
+        display: none;
+        // display: flex;
+        // justify-content: center;
+        // align-items: center;
+        &:hover {
+          position: relative;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          z-index: 9999;
+        }
+      }
+      // .popButton_arrow:hover {
+      //   position: relative;
+      //   display: flex;
+      //   justify-content: center;
+      //   align-items: center;
+      //   z-index: 9999;
+      // }
+      // &:hover {
+      //   -ms-transform: scale(5.5); /* IE 9 */
+      //   -webkit-transform: scale(5.5); /* Safari 3-8 */
+      //   transform: scale(5.5);
+      //   // .popButton_arrow {
+      //   //   // display: block;
+      //   //   display: flex;
+      //   //   justify-content: center;
+      //   //   align-items: center;
+      //   // }
+      // }
+    }
+
+    // &::before {
+    //   padding: 4px;
+    //   background-color: green;
+    //   transition: transform 0.2s;
+    //   width: 5px;
+    //   height: 5px;
+    //   margin: 0 auto;
+    //   border-radius: 50%;
+    // }
+  }
+}
+
+.btn {
+  // display: inline-block;
+  display: flex;
+  align-items: center;
+  color: #ffffff;
+  padding: 5px;
+  position: relative;
+  letter-spacing: 1px;
+
+  &__circle,
+  &__text,
+  &__white-circle {
+    position: absolute;
+  }
+
+  &__circle {
+    // top: 0;
+    left: 0;
+    height: 11px;
+    width: 11px;
+    border-radius: 100%;
+    box-shadow: 0 0 1px 1px #fff;
+    transition: 0.3s linear;
+    left: 0;
+  }
+  &__inner-circle {
+    // top: 0;
+    // position: absolute;
+    left: 35%;
+    height: 4px;
+    width: 4px;
+    border-radius: 100%;
+    background: #fff;
+    transition: 0.3s linear;
+  }
+
+  &__white-circle {
+    top: 50%;
+    // left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    width: 48px;
+    height: 48px;
+    border-radius: 100%;
+    background: #ffffff;
+    display: flex;
+    transition: 0.3s ease-in-out;
+
+    svg {
+      width: 12px;
+      height: 12px;
+      margin: auto;
+    }
+  }
+
+  &__text {
+    top: 50%;
+    transform: translateY(-50%);
+    white-space: nowrap;
+    z-index: 2;
+    padding: 24px 28px;
+    transition: 0.3s linear;
+    line-height: 10px;
+    text-decoration: underline;
+    text-underline-offset: 1em;
+    text-decoration-thickness: 1.5px;
+  }
+
+  &:hover {
+    .btn__circle {
+      transform: scale(0);
+    }
+
+    .btn__white-circle {
+      transform: translate(-50%, -50%) scale(1);
+    }
+
+    .btn__text {
+      transform: translate(10px, -50%);
+      text-decoration: none;
+    }
+  }
+}

@@ -1,0 +1,133 @@
+.animated-button {
+  background-color: green;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+
+.animated-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background-color: darkblue;
+  transition: left 0.3s ease;
+  z-index: -1;
+}
+
+.animated-button:hover::before {
+  left: 0;
+}
+
+@keyframes btn_animate_circle_animation {
+  0% {
+    width: 44px;
+  }
+  50% {
+    display: flex;
+    width: 77.5px;
+    // padding-right: 0px 18px 0px 50.5px;
+    justify-content: flex-end;
+    align-items: center;
+  }
+  100% {
+    display: flex;
+    width: 155px;
+
+    // padding: 0px 18px 0px 128px;
+    justify-content: flex-end;
+    align-items: center;
+  }
+}
+
+.btn_animate1 {
+  display: flex;
+  position: relative;
+  cursor: pointer;
+  width: 159px;
+  height: 48px;
+  padding: 2px 2px 2px 21px;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 25px;
+  border-radius: 192px;
+  background-color: #01b969;
+  border: none;
+  transition:
+    background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,
+    box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,
+    border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  box-shadow:
+    0px 3px 5px -1px rgba(0, 0, 0, 0.2),
+    0px 6px 10px 0px rgba(0, 0, 0, 0.14),
+    0px 1px 18px 0px rgba(0, 0, 0, 0.12);
+  .btn_animate1_text {
+    position: absolute;
+    left: 21px;
+    color: #1e1e1e;
+    font-family: Inter;
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+  }
+}
+.btn_animate_circle {
+  display: flex;
+  position: relative;
+  width: 44px;
+  height: 44px;
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 0;
+  border-radius: 136px;
+  background: #1e1e1e;
+  svg {
+    position: absolute;
+    right: 18px;
+  }
+}
+
+.btn_animate1:hover .btn_animate_circle {
+  animation: btn_animate_circle_animation 0.5s linear forwards;
+}
+
+.btn_animate1:hover .btn_animate1_text {
+  color: white;
+  z-index: 999;
+}
+
+/* Initial state of the button */
+.button_11 {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #1e1e1e;
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  transition:
+    background-color 600ms cubic-bezier(0.59, 0, 0, 1.01),
+    transform 600ms cubic-bezier(0.59, 0, 0, 1.01);
+}
+
+/* Hover state */
+.button_11:hover {
+  background-color: #1e1e1e;
+  transform: scale(1.05);
+  animation-timing-function: cubic-bezier(0, 0, 0.58, 1);
+  animation-duration: 300ms;
+}
+
+/* Active/click state */
+.button_11:active {
+  background-color: #1e1e1e;
+  transform: scale(0.95);
+  animation-timing-function: cubic-bezier(0.59, 0, 0, 1.01);
+  animation-duration: 600ms;
+}
