@@ -15,7 +15,7 @@ import { MotionContainer, varFade } from 'src/components/animate';
 export default function HomeHero() {
   const settings = useSettingsContext();
   return (
-    <Container maxWidth={false} sx={{ maxWidth: '1400px', width: '100%', mx: 'auto', mb: 15 }}>
+    <Container maxWidth={false} sx={{ maxWidth: '1400px', width: '100%', mx: 'auto', mb: 25 }}>
       <Grid
         container
         justifyContent={{
@@ -24,8 +24,8 @@ export default function HomeHero() {
         }}
         sx={{ mb: 5 }}
       >
-        <Grid xs={12} md={8}>
-          <Stack sx={{ mt: 15 }}>
+        <Grid xs={12} md={6}>
+          <Stack sx={{ mt: 6 }}>
             <Typography
               variant="h2"
               sx={{

@@ -1,9 +1,9 @@
-import Carousel from 'react-slick';
+export * from './classes';
 
-export { default as CarouselDots } from './carousel-dots';
-export { default as CarouselArrows } from './carousel-arrows';
-export { default as CarouselArrowIndex } from './carousel-arrow-index';
+export * from './carousel';
 
-export { default as useCarousel } from './use-carousel';
+export * from './components';
 
-export default Carousel;
+export * from './breakpoints';
+
+export * from './hooks/use-carousel';

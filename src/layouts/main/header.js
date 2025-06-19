@@ -35,7 +35,7 @@ export default function Header() {
   const offsetTop = useOffSetTop(HEADER.H_DESKTOP);
 
   return (
-    <AppBar>
+    <AppBar sx={{ position: 'relative' }}>
       <Toolbar
         disableGutters
         sx={{

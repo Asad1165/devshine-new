@@ -1,6 +1,8 @@
 import React, { useEffect, useRef } from 'react';
 import Container from '@mui/material/Container';
 import Box from '@mui/material/Box';
+import Typography from '@mui/material/Typography';
+import Stack from '@mui/material/Stack';
 
 // import Card from '@mui/material/Card';
 
@@ -30,6 +32,27 @@ export default function ParallaxFrame() {
 
   return (
     <Container maxWidth={false} sx={{ maxWidth: '1400px', width: '100%', mx: 'auto', mb: 15 }}>
+      <Stack flexDirection="column" justifyContent="center" alignItems="center">
+        <Stack flexDirection="column" justifyContent="center" textAlign="center" maxWidth={700}>
+          <Typography variant="h6" sx={{ fontWeight: 400 }}>
+            Partners
+          </Typography>
+          <Typography variant="h1" sx={{ fontWeight: 400 }}>
+            A good journey starts with great partners.
+          </Typography>
+        </Stack>
+        <Stack
+          flexDirection="column"
+          justifyContent="center"
+          textAlign="center"
+          maxWidth={450}
+          mt={2}
+        >
+          <Typography variant="h6" sx={{ fontWeight: 400 }}>
+            We establish deep relations that keep adding value even when the project has finished.
+          </Typography>
+        </Stack>
+      </Stack>
       <Box ref={container} className={styles.main}>
         {projects.map((project, i) => {
           const targetScale = 1 - (projects.length - i - 1) * 0.06;

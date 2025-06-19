@@ -1,7 +1,7 @@
 'use client';
 
 // React
-
+import '../index.scss';
 // @mui
 import Box from '@mui/material/Box';
 // layouts
@@ -13,6 +13,7 @@ import ScrollProgress from 'src/components/scroll-progress';
 // import HomeUnlockPower from 'src/sections/products/ctrboss/home-unlock-power';
 import HomeHero from '../home-hero';
 import ParallaxFrame from '../parallax-frame';
+import PartnersFrame from '../partners-frame';
 
 // ----------------------------------------------------------------------
 const faqs = [{}];
@@ -25,6 +26,7 @@ export default function HomeView() {
 
       <HomeHero />
       <ParallaxFrame />
+      <PartnersFrame />
     </MainLayout>
   );
 }
