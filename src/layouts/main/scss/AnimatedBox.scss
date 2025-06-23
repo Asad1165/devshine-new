@@ -1,0 +1,20 @@
+.animated-box {
+    background-color: #ffffff;
+    border-radius: 20px;
+    box-shadow: 0px 12px 20px rgba(0, 0, 0, 0.1);
+    padding: 2rem;
+    margin: 3rem auto;
+    max-width: 600px;
+    text-align: center;
+  
+    .title {
+      font-weight: 700;
+      margin-bottom: 1rem;
+    }
+  
+    .content {
+      font-size: 1rem;
+      color: #555555;
+    }
+  }
+  

@@ -2,8 +2,9 @@ import PropTypes from 'prop-types';
 // @mui
 import Stack from '@mui/material/Stack';
 import Container from '@mui/material/Container';
-//
 import { HeaderSimple as Header } from '../_common';
+import SmoothProjects from '../main/smooth-projects';
+import Footer from '../main/footer';
 
 // ----------------------------------------------------------------------
 
@@ -11,7 +12,6 @@ export default function CompactLayout({ children }) {
   return (
     <>
       <Header />
-
       <Container component="main">
         <Stack
           sx={{
@@ -25,6 +25,7 @@ export default function CompactLayout({ children }) {
         >
           {children}
         </Stack>
+        <Footer />
       </Container>
     </>
   );
