@@ -1,107 +1,131 @@
-'use client';
 import { useEffect, useRef, useState } from 'react';
-import { Box } from '@mui/material';
-import { m, useMotionValue, useTransform, useSpring } from 'framer-motion';
-import '../main/scss/interactiveCard.scss';
 
+import '../main/scss/InteractiveCard.scss';
 const imageUrls = [
-  '/images/360_F_320899175_TuIgRgjVsNhv2Jl2y1YOdKelMxLTRCUl.jpg',
-  '/images/download.jpg',
-  '/images/images.jpg',
+  'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&h=400&fit=crop',
+  'https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=400&h=400&fit=crop',
+  'https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=400&h=400&fit=crop',
 ];
 
 export default function FloatingImageBoxes() {
-  const [activeIndex, setActiveIndex] = useState(null);
-  const mouseX = useMotionValue(0);
-  const mouseY = useMotionValue(0);
-
   const containerRef = useRef(null);
+  const [activeIndex, setActiveIndex] = useState(null);
+  const [transforms, setTransforms] = useState(
+    imageUrls.map(() => ({ x: 0, y: 0, scale: 1 }))
+  );
+  const mouse = useRef({ x: 0, y: 0 });
+  const animationFrameRef = useRef();
 
-  useEffect(() => {
-    const handleMouseMove = (e) => {
-      mouseX.set(e.clientX);
-      mouseY.set(e.clientY);
-    };
+useEffect(() => {
+  const handleMouseMove = (e) => {
+    mouse.current = { x: e.clientX, y: e.clientY };
+    if (activeIndex !== null && containerRef.current) {
+      const box = containerRef.current.children[activeIndex];
+      const rect = box.getBoundingClientRect();
+      const centerX = rect.left + rect.width / 2;
+      const centerY = rect.top + rect.height / 2;
+      const diffX = mouse.current.x - centerX;
+      const diffY = mouse.current.y - centerY;
+      const animate = () => {
+        setTransforms(prev => {
+          const newTransforms = [...prev];
+          const targetX = diffX * 3.0; // Dramatic horizontal movement
+          const targetY = diffY * 3.0; // Dramatic vertical movement
+          newTransforms[activeIndex] = {
+            ...newTransforms[activeIndex],
+            x: newTransforms[activeIndex].x + (targetX - newTransforms[activeIndex].x) * 0.25,
+            y: newTransforms[activeIndex].y + (targetY - newTransforms[activeIndex].y) * 0.25,
+          };
+          return newTransforms;
+        });
+        animationFrameRef.current = requestAnimationFrame(animate);
+      };
+      if (animationFrameRef.current) {
+        cancelAnimationFrame(animationFrameRef.current);
+      }
+      animationFrameRef.current = requestAnimationFrame(animate);
+    }
+  };
 
-    window.addEventListener('mousemove', handleMouseMove);
-    return () => window.removeEventListener('mousemove', handleMouseMove);
-  }, [mouseX, mouseY]);
+  window.addEventListener('mousemove', handleMouseMove);
+  return () => {
+    window.removeEventListener('mousemove', handleMouseMove);
+    if (animationFrameRef.current) {
+      cancelAnimationFrame(animationFrameRef.current);
+    }
+  };
+}, [activeIndex]);
+
+
+  const handleEnter = (index) => {
+    setActiveIndex(index);
+    document.body.style.cursor = 'none';
+    
+    setTransforms(prev => {
+      const newTransforms = [...prev];
+      newTransforms[index] = { ...newTransforms[index], scale: 1.1 };
+      return newTransforms;
+    });
+  };
+
+const handleLeave = (index) => {
+  setActiveIndex(null);
+  document.body.style.cursor = 'auto';
+
+  if (animationFrameRef.current) {
+    cancelAnimationFrame(animationFrameRef.current);
+    animationFrameRef.current = null;
+  }
+
+  setTransforms(prev => {
+    const newTransforms = [...prev];
+    newTransforms[index] = { x: 0, y: 0, scale: 1 };
+    return newTransforms;
+  });
+};
+
 
   return (
-    <Box
-      ref={containerRef}
-      className="floating-boxes"
-      sx={{
-        width: '100vw',
-        height: '100vh',
-        display: 'flex',
-        justifyContent: 'space-between',
-        alignItems: 'center',
-        padding: '0 5vw',
-        overflow: 'hidden',
-      }}
-    >
+    <div ref={containerRef} className="floating-boxes">
       {imageUrls.map((src, i) => {
-        const x = useTransform(mouseX, (val) => {
-          if (activeIndex !== i) return 0;
-          const center = window.innerWidth / 2;
-          return (val - center) * 0.1;
-        });
-
-        const y = useTransform(mouseY, (val) => {
-          if (activeIndex !== i) return 0;
-          const center = window.innerHeight / 2;
-          return (val - center) * 0.1;
-        });
-
-        const scale = useSpring(activeIndex === i ? 1.1 : 1, {
-          stiffness: 300,
-          damping: 30,
-        });
-
-        const boxSize = i === 1 ? '22vw' : '16vw';
-
+        // First and third images: 150px, second image: 300px
+        const sizeClass = i === 1 ? 'large' : 'small';
+        const transform = transforms[i];
+        
         return (
-          <m.div
+          <div
             key={i}
-            onMouseEnter={() => {
-              setActiveIndex(i);
-              document.body.style.cursor = 'none';
-            }}
-            onMouseLeave={() => {
-              setActiveIndex(null);
-              document.body.style.cursor = 'auto';
-            }}
+            onMouseEnter={() => handleEnter(i)}
+            onMouseLeave={() => handleLeave(i)}
+            className={`floating-box ${sizeClass}`}
             style={{
-              width: boxSize,
-              height: boxSize,
-              x,
-              y,
-              scale,
-              boxShadow:
-                activeIndex === i
-                  ? '0 30px 50px rgba(0,0,0,0.3)'
-                  : '0 10px 20px rgba(0,0,0,0.1)',
-              borderRadius: '12px',
-              display: 'flex',
-              justifyContent: 'center',
-              alignItems: 'center',
-              pointerEvents: 'auto',
+              transform: `translate(${transform.x}px, ${transform.y}px) scale(${transform.scale})`,
+              transition: activeIndex === i 
+                ? 'box-shadow 0.2s ease' // Removed transform transition for instant response
+                : 'transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.2s ease', // Faster return transition
             }}
           >
             <img
               src={src}
-              alt={`box-${i}`}
-              style={{
-                width: '100%',
-                height: '100%',
-                objectFit: 'cover',
-                borderRadius: 'inherit',
-              }}
+              alt={`floating-box-${i}`}
             />
-          </m.div>
+            
+            {/* Subtle hover glow effect */}
+            <div className={`hover-glow ${activeIndex === i ? 'active' : ''}`} />
+          </div>
         );
       })}
-    </Box>
+      
+      {/* Custom cursor when hovering */}
+      {activeIndex !== null && (
+        <div
+          className="custom-cursor"
+          style={{
+            left: mouse.current.x - 8,
+            top: mouse.current.y - 8,
+          }}
+        />
+      )}
+    </div>
   );
 }

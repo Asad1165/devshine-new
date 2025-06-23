@@ -20,37 +20,46 @@ export default function OurProcess() {
   const componentRef = useRef(null);
   const lottieRef = useRef(null);
 
-  useEffect(() => {
-    const container = lottieRef.current;
-    if (!container) return;
-  
-    const ctx = gsap.context(() => {
-      const anim = lottie.loadAnimation({
-        container,
-        renderer: 'svg',
-        loop: false,
-        autoplay: false,
-        path: '/Logo.json',
-      });
-      anim.addEventListener('DOMLoaded', () => {
-        const playhead = { frame: 0 };
-        gsap.to(playhead, {
-          frame: anim.totalFrames - 1,
-          ease: 'none',
-          scrollTrigger: {
-            trigger: '.stepsSection',
-            start: 'top center',
-            end: 'bottom bottom+=100%',
-            scrub: 2, // ← increase to slow it down more
-            onUpdate: () => {
-              anim.goToAndStop(playhead.frame, true);
-            },
+useEffect(() => {
+  const container = lottieRef.current;
+  if (!container) return;
+
+  let anim;
+
+  const ctx = gsap.context(() => {
+    anim = lottie.loadAnimation({
+      container,
+      renderer: 'svg',
+      loop: false,
+      autoplay: false,
+      path: '/Logo.json',
+    });
+
+    anim.addEventListener('DOMLoaded', () => {
+      const playhead = { frame: 0 };
+
+      gsap.to(playhead, {
+        frame: anim.totalFrames - 1,
+        ease: 'none',
+        scrollTrigger: {
+          trigger: '.stepsSection',
+          start: 'top center',
+          end: 'bottom bottom+=100%',
+          scrub: 2,
+          onUpdate: () => {
+            anim.goToAndStop(playhead.frame, true);
           },
-        });
+        },
       });
-    }, componentRef);
-    return () => ctx.revert();
-  }, []);
+    });
+  }, componentRef);
+
+  return () => {
+    ctx.revert();
+    anim?.destroy(); // ← clean up Lottie animation
+  };
+}, []);
+
   
   
 
