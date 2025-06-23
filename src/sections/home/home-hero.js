@@ -9,6 +9,8 @@ import Typography from '@mui/material/Typography';
 import { useSettingsContext } from 'src/components/settings';
 // components
 import { MotionContainer, varFade } from 'src/components/animate';
+import AdvancedR3FCube from './advanced-r3f-cube';
+// import FloatingCube from './floating-cube';
 
 // ----------------------------------------------------------------------
 
@@ -49,7 +51,59 @@ export default function HomeHero() {
             </Typography>
           </Stack>
         </Grid>
-        <Grid xs={12} md={4}></Grid>
+        <Grid xs={12} md={5}>
+          {/* <Box
+            component={m.div}
+            initial={{ opacity: 0, x: 100 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 1, delay: 0.3 }}
+            sx={{
+              display: 'flex',
+              justifyContent: 'center',
+              alignItems: 'center',
+              height: '100%',
+              minHeight: { xs: '350px', md: '450px' },
+              position: 'relative',
+            }}
+          >
+
+            <AdvancedR3FCube variant="main" />
+
+
+            <Box
+              sx={{
+                position: 'absolute',
+                top: '10%',
+                right: '10%',
+                width: 20,
+                height: 20,
+                borderRadius: '50%',
+                background: 'linear-gradient(45deg, #3b82f6, #8b5cf6)',
+                opacity: 0.6,
+                animation: 'float 3s ease-in-out infinite',
+                '@keyframes float': {
+                  '0%, 100%': { transform: 'translateY(0px)' },
+                  '50%': { transform: 'translateY(-10px)' },
+                },
+              }}
+            />
+
+            <Box
+              sx={{
+                position: 'absolute',
+                bottom: '20%',
+                left: '5%',
+                width: 15,
+                height: 15,
+                borderRadius: '50%',
+                background: 'linear-gradient(45deg, #10b981, #06b6d4)',
+                opacity: 0.4,
+                animation: 'float 4s ease-in-out infinite reverse',
+              }}
+            />
+          </Box> */}
+          <AdvancedR3FCube variant="main" />
+        </Grid>
       </Grid>
     </Container>
   );
