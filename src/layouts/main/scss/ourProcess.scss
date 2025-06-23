@@ -1,0 +1,119 @@
+.ourProcessWrapper {
+  margin-top: 90px;
+
+  @media (min-width: 768px) {
+    margin-top: 14rem;
+  }
+}
+
+.processFlexContainer {
+  display: flex;
+  flex-direction: column;
+
+  @media (min-width: 768px) {
+    flex-direction: row;
+    align-items: center; // ⬅️ Important
+    min-height: 180vh;
+  }
+}
+
+
+.rightContainer {
+  flex: 0 0 35%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.stepsSection {
+  flex: 1;
+  padding: 0 3rem;
+}
+
+
+.lottieWrapper {
+  width: 176px;
+  height: 176px;
+
+  @media (min-width: 768px) {
+    width: 330px;
+    height: 330px;
+    position: sticky;
+    top: 120px;
+  }
+}
+
+.lottieWrapper svg {
+  width: 100% !important;
+  height: 100% !important;
+}
+
+
+.stepsSection {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+  padding: 0 3rem;
+
+  @media (min-width: 768px) {
+    width: 50%;
+    gap: 8.5rem;
+  }
+}
+
+.stepContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.stepTitle {
+  font-weight: 400;
+  font-size: 64px !important;
+  color: black;
+}
+
+.stepText {
+  font-weight: 400;
+  font-size: 18px !important;
+  color: black;
+}
+
+.processFlexContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+  width: 100%;
+
+  @media (min-width: 768px) {
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 12rem;
+    min-height: 200vh; // allow scroll
+  }
+}
+
+.rightContainer {
+  flex: 0 0 40%;
+  position: relative;
+
+  @media (min-width: 768px) {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    height: 100vh; // fix height for sticky to work
+  }
+}
+
+.lottieWrapper {
+  width: 176px;
+  height: 176px;
+  position: sticky;
+  top: calc(50vh - 165px); // Center it visually
+
+  @media (min-width: 768px) {
+    width: 250px;
+    height: 250px;
+    top: calc(50vh - 125px); // Half of its height
+  }
+}

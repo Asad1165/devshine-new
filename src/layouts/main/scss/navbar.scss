@@ -1,0 +1,164 @@
+.navbar {
+  position: fixed;
+  bottom: 2%;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1000;
+  background-color: #161616;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 16px;
+  color: #fff;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  gap: 20px;
+  min-width: 360px;
+}
+
+.left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+
+  .brand {
+    font-size: 1rem;
+    font-weight: 600;
+    color: white;
+  }
+
+  .divider {
+    width: 1px;
+    height: 24px;
+    background-color: #555;
+  }
+}
+
+.icons {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+
+  .icon-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 12px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.3s ease;
+    color: white;
+    position: relative;
+
+    .iconify {
+      transition: transform 0.3s ease;
+    }
+
+    .icon-label {
+      font-size: 0.75rem;
+      color: #ccc;
+      transition: opacity 0.3s ease, transform 0.3s ease;
+      opacity: 0;
+      width: 0;
+      overflow: hidden;
+      transform: translateX(-4px);
+      display: inline-block;
+    }
+
+    &:hover {
+      background-color: #2a2a2a;
+
+      .iconify {
+        transform: scale(1.15); // pop effect on hover
+      }
+    }
+
+    &.active {
+      background-color: #2d2d2d;
+
+      .iconify {
+        transform: scale(1.1);
+      }
+
+      .icon-label {
+        opacity: 1;
+        width: auto;
+        transform: translateX(0px);
+        margin-left: 4px;
+      }
+    }
+  }
+
+  .langSwitcher {
+    display: flex;
+    background-color: #333;
+    border-radius: 6px;
+    overflow: hidden;
+
+    .lang {
+      padding: 4px 8px;
+      font-size: 0.75rem;
+      color: white;
+      cursor: pointer;
+      transition: background 0.2s;
+
+      &.active {
+        background-color: #555;
+      }
+
+      &:hover {
+        background-color: #444;
+      }
+    }
+  }
+  .langToggle {
+    .toggle-bg {
+      position: relative;
+      width: 76px;
+      height: 32px;
+      background-color: #666;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 4px;
+      cursor: pointer;
+      gap: 12px;
+    }
+  
+    .toggle-label {
+      z-index: 2;
+      width: 50%;
+      text-align: center;
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: white;
+      transition: color 0.2s ease;
+      user-select: none;
+  
+      &.active {
+        color: white;
+      }
+    }
+  
+    .toggle-thumb {
+      position: absolute;
+      top: 3px;
+      width: 30px;
+      height: 26px;
+      background-color: black;
+      border-radius: 6px;
+      z-index: 1;
+      transition: left 0.3s ease;
+  
+      &.left {
+        left: 3px;
+      }
+  
+      &.right {
+        left: 42px;
+      }
+    }
+  }
+  
+}

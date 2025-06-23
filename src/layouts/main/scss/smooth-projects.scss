@@ -1,0 +1,41 @@
+.container {
+  text-align: center;
+  margin: 0 auto;
+}
+
+.section-title {
+  color: #a3a3a3;
+  font-size: 1rem;
+  font-weight: 400;
+}
+
+.main-heading {
+  margin-top: 1rem;
+  font-weight: 400;
+  font-size: 3rem;
+  line-height: 3.5rem;
+  color: #000;
+  text-align: center;
+
+  @media (min-width: 768px) {
+    font-size: 4rem;
+    line-height: 4rem;
+  }
+
+  .desktop-inline {
+    display: none;
+
+    @media (min-width: 768px) {
+      display: inline-block;
+    }
+  }
+}
+
+.sub-text {
+  margin-top: 3rem;
+  font-size: 1rem;
+  line-height: 1.25rem;
+  color: #000;
+  font-weight: 400;
+  text-align: center;
+}
