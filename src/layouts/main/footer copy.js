@@ -10,18 +10,22 @@ const Footer = ({ isDark, isLight }) => {
 
   return (
 <Box
-  className="footer">
+  className="footer"
+
+>
       <Box className="footer__content">
         <BlurFade delay={0.25} inView>
           <Typography variant="h1" className="footer__title" sx={{ color: textColor }}>
             Your next departure <br className="hide-mobile" /> starts here
           </Typography>
         </BlurFade>
+
         <BlurFade delay={0.5} inView>
           <Typography className="footer__subtext" sx={{ color: textColor }}>
             Let’s talk
           </Typography>
         </BlurFade>
+
         <BlurFade delay={0.75} inView>
           <svg
             width="106"
@@ -40,6 +44,7 @@ const Footer = ({ isDark, isLight }) => {
           </svg>
         </BlurFade>
       </Box>
+
       <Box className="footer__info">
         <Typography className="footer__slogan" sx={{ color: textColor }}>
           Design. Develop. Depart.

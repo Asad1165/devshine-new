@@ -82,7 +82,6 @@ export default function MainLayout({ children }) {
           {children}
         </Box>
       </Box>
-        <SmoothProjects/>
 
       {/* <div className="conclusion" ref={conclusionRef} /> */}
       <footer className="footer">
