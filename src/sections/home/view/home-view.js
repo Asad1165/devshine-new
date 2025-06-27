@@ -16,6 +16,7 @@ import ParallaxFrame from '../parallax-frame';
 import PartnersFrame from '../partners-frame';
 import SmoothProjects from 'src/layouts/main/smooth-projects';
 import InteractiveCard from 'src/layouts/main/InteractiveCard';
+import PointerFollowingCard from '../pointer-following-card';
 
 // ----------------------------------------------------------------------
 const faqs = [{}];
@@ -27,11 +28,11 @@ export default function HomeView() {
       {/* <ScrollProgress scrollYProgress={scrollYProgress} /> */}
 
       <HomeHero />
-      <InteractiveCard/>
+      {/* <InteractiveCard /> */}
+      <PointerFollowingCard />
       <ParallaxFrame />
       <PartnersFrame />
-      <SmoothProjects/>
-
+      <SmoothProjects />
     </MainLayout>
   );
 }

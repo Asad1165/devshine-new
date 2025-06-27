@@ -37,7 +37,7 @@ export default function ParallaxFrame() {
           <Typography variant="h6" sx={{ fontWeight: 400 }}>
             Partners
           </Typography>
-          <Typography variant="h1" sx={{ fontWeight: 400 }}>
+          <Typography variant="h2" sx={{ fontWeight: 400 }}>
             A good journey starts with great partners.
           </Typography>
         </Stack>

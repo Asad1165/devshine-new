@@ -53,7 +53,7 @@ export const typography = {
     fontWeight: 800,
     lineHeight: 80 / 64,
     fontSize: pxToRem(38),
-    ...responsiveFontSizes({ sm: 52, md: 58, lg: 64 }),
+    ...responsiveFontSizes({ sm: 48, md: 56, lg: 108 }),
   },
   h2: {
     fontWeight: 800,

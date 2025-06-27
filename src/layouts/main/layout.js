@@ -11,10 +11,9 @@ import { m, useScroll, useTransform } from 'framer-motion';
 // routes
 import { usePathname } from 'src/routes/hooks';
 //
-import Footer from './footer copy';
+import Footer from './footer';
 import Header from './header';
 import Navbar from './navbar';
-import SmoothProjects from './smooth-projects';
 
 // ----------------------------------------------------------------------
 
@@ -70,7 +69,7 @@ export default function MainLayout({ children }) {
     <>
       <Box ref={conclusionRef} sx={{ display: 'flex', flexDirection: 'column', height: 1 }}>
         <Header />
-        <Navbar/>
+        {/* <Navbar /> */}
         <Box
           component="main"
           class
@@ -90,9 +89,9 @@ export default function MainLayout({ children }) {
           style={{
             y: yPercent,
           }}
-          initial={{ y: '-75%' }}
+          initial={{ y: '-50%' }}
         >
-          <Footer/>
+          <Footer />
         </m.section>
       </footer>
     </>

@@ -79,9 +79,7 @@ export default function FloatingImageBoxes() {
               y,
               scale,
               boxShadow:
-                activeIndex === i
-                  ? '0 30px 50px rgba(0,0,0,0.3)'
-                  : '0 10px 20px rgba(0,0,0,0.1)',
+                activeIndex === i ? '0 30px 50px rgba(0,0,0,0.3)' : '0 10px 20px rgba(0,0,0,0.1)',
               borderRadius: '12px',
               display: 'flex',
               justifyContent: 'center',

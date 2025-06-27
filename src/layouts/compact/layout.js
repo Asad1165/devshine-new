@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import Stack from '@mui/material/Stack';
 import Container from '@mui/material/Container';
 import { HeaderSimple as Header } from '../_common';
-import SmoothProjects from '../main/smooth-projects';
 import Footer from '../main/footer';
 
 // ----------------------------------------------------------------------

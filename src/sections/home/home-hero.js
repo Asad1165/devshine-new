@@ -17,7 +17,7 @@ import AdvancedR3FCube from './advanced-r3f-cube';
 export default function HomeHero() {
   const settings = useSettingsContext();
   return (
-    <Container maxWidth={false} sx={{ maxWidth: '1400px', width: '100%', mx: 'auto', mb: 25 }}>
+    <Container maxWidth={false} sx={{ maxWidth: '1400px', width: '100%', mx: 'auto' }}>
       <Grid
         container
         justifyContent={{
